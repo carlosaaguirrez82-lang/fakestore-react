@@ -1,12 +1,8 @@
-import { LoginPage } from './ui/pages/LoginPage'
+import { AppRouter } from "./app/providers/RouterProvider";
+
 
 const App = () => {
-  return (
-    <div>
-      <h1>FakeStore React – clase 2</h1>
-      <LoginPage />
-    </div>
-  );
+      return <AppRouter />  
 }
 
 export default App;
