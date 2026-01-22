@@ -1,13 +1,7 @@
-import { LoginPage } from './ui/pages/LoginPage'
+import { AppRouter } from './app/providers/RouterProvider'
 
-const App = () => {
-  return (
-    <div>
-      <h1>FakeStore React – clase 2</h1>
-      {/*Es donde se mostrará la LoginPage*/}
-      <LoginPage />
-    </div>
-  );
+const App = () => {//En App se va a mostrar árbol de rutas
+  return <AppRouter />
 }
 
 export default App;
