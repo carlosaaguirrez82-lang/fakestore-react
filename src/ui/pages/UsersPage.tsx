@@ -10,23 +10,6 @@ const UsersPage = () => {
     userApi.getAll().then(setUsers)
     }, [])
 
-// useEffect(() => {
-//   let isMounted = true
-
-//   const loadUsers = async () => {
-//     const data = await userApi.getAll()
-//     if (isMounted) {
-//       setUsers(data)
-//     }
-//   }
-
-//   loadUsers()
-
-//   return () => {
-//     isMounted = false
-//   }
-// }, [])
-
   return (
     <MainLayout>
       <h2>Usuarios</h2>
