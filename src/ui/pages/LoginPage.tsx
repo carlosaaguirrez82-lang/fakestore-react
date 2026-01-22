@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
 import { useAuthStore } from '../../app/store/useAuthStore';
+import '../../ui/styles/LoginPage.css';
 
 export function LoginPage() {
   const login = useAuthStore((state) => state.login);
@@ -28,11 +29,11 @@ export function LoginPage() {
 
       console.log("Login exitoso");
       
-      // 3. Si todo sale bien, navegamos
+      // Si todo sale bien, redirige a usuarios
       navigate('/users');
       
     } catch (err) {
-      // 4. Si la API falla, capturamos el error para mostrarlo en la UI
+      // Si la API falla, capturamos el error para mostrarlo en la UI
       console.error("Error:", err);
       setError("Usuario o contraseña incorrectos.");
     }
@@ -40,13 +41,12 @@ export function LoginPage() {
 
   return (
     <Container maxWidth="xs">
-      <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography component="h1" variant="h5">
-          Login FakeStore
+      <Box className="login-container">
+        <Typography component="h1" variant="h5" className="login-title">
+          FakeStore Login
         </Typography>
         
-        {/* El onSubmit debe estar vinculado a la función handleLogin */}
-        <Box component="form" onSubmit={handleLogin} sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleLogin} className="login-form">
           <TextField
             margin="normal"
             required
@@ -66,9 +66,8 @@ export function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {/* Si hay error, mostramos la alerta de Material UI */}
           {error && (
-            <Alert severity="error" sx={{ mt: 2 }}>
+            <Alert severity="error" className="login-error-alert">
               {error}
             </Alert>
           )}
@@ -77,7 +76,7 @@ export function LoginPage() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            className="login-button"
           >
             Iniciar Sesión
           </Button>
