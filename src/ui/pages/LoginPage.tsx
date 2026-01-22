@@ -6,10 +6,9 @@ export function LoginPage() {
     const navigate = useNavigate()
 
     const handleLogin = async (user:string , psw:string) => {
-    
-    await login(user,psw)
-    navigate('/users')
-  }
+        await login(user,psw)
+        navigate('/products')
+    }
 
 return (
 <div>
