@@ -10,6 +10,7 @@ export function LoginPage() {
 
     const usuarios = 'mor_2314';
     const pasw = '83r5^_';
+    
     //Envía los datos al método login. 
     const handleLogin = async () => {
         await login(usuarios, pasw);//Espera la respuesta de login

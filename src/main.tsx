@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import { AppQueryProvider } from './app/providers/QueryProvider'
 
 //ReactDOM es el que se encarga de coordinar o unir el document HTML con el resto de la aplicación
 //Se utiliza el ! para decirle a createRoot que siempre va a existir el elemento 'root', 
@@ -8,6 +9,8 @@ import App from './App'
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         {/*En app es donde se ejecutará la aplicación  dentro de root*/}
-        <App />
+        <AppQueryProvider>{/*Proveerá datos para la app*/}
+            <App />
+        </AppQueryProvider>
     </React.StrictMode>
 )

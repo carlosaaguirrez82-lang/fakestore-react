@@ -1,10 +1,13 @@
 import type { PropsWithChildren } from 'react'
+import { NavBar } from '../components/NavBar';
+import { NavItems } from '../../app/config/navigation';
+import { Typography } from '@mui/material';
 
 const MainLayout =({ children }: PropsWithChildren) =>{
   return (
-    <div style={{ padding: '1rem' }}>
+    <div>
       <header>
-        <h3>FakeStore</h3>
+        <NavBar items={NavItems}/>
       </header>
       <main>{children}</main>
     </div>

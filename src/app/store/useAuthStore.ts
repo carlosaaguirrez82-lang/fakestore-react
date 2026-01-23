@@ -19,7 +19,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     token: null,
     isAuthenticated: false,
 
-
     login: async (username, password) => {
         //Con esta línea llama a authApi y ejecuta su método login y espera su respuesta.
         const { token } = await authApi.login(username, password)
