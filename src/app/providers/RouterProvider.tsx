@@ -1,6 +1,7 @@
 import type { JSX } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage } from '../../ui/pages/LoginPage'
+import  ProductsPage from '../../ui/pages/ProductsPage'
 import  UsersPage  from '../../ui/pages/UsersPage'
 import  ErrorPage  from '../../ui/pages/ErrorPage'
 
@@ -27,6 +28,14 @@ export function AppRouter() {
           }
         />
 
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <ProductsPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
