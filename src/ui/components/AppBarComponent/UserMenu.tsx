@@ -28,6 +28,12 @@ export const UserMenu = ({
     navigate('/login');
   };
 
+  const handleMenuProfile = () => {
+    handleMenuClose();
+    navigate('/users')
+  };
+
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -41,9 +47,9 @@ export const UserMenu = ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-      <MenuItem onClick={onLogoutClick} sx={{ color: 'error.main' }}>Logout</MenuItem>
+      <MenuItem onClick={handleMenuProfile}>Mi perfil</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Ajustes</MenuItem>
+      <MenuItem onClick={onLogoutClick} sx={{ color: 'error.main' }}>Cerrar sesión</MenuItem>
     </Menu>
   );
 

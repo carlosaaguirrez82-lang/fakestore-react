@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Box from '@mui/material/Box';
 import { userApi } from '../../infrastructure/api/userApi'
 import MainLayout from '../layouts/MainLayout'
 import type { User } from '../../domain/models/User'
@@ -11,14 +12,14 @@ const UsersPage = () => {
     }, [])
 
   return (
-    <MainLayout>
+    <Box>
       <h2>Usuarios</h2>
       <ul>
         {users.map((u) => (
           <li key={u.id}>{u.username}</li>
         ))}
       </ul>
-    </MainLayout>
+    </Box>
   )
 }
 
