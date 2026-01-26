@@ -7,6 +7,7 @@ import HomePage from '../../ui/pages/HomePage'
 import CategoryPage from '../../ui/pages/CategoryPage'
 import { useAuthStore } from '../store/useAuthStore'
 import ProductDetailsPage from '../../ui/pages/ProductDetailsPage'
+import MainLayout from '../../ui/layouts/MainLayout'
 
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
@@ -22,51 +23,54 @@ export function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route 
           path="/" 
-          element={<Navigate to={isAuthenticated ? "/products" : "/login"} />} 
+          element={<Navigate to={isAuthenticated ? "/home" : "/login"} />} 
         />
 
-        <Route 
-          path="/error" 
-          element={<ErrorPage />} 
-        />
-
-        <Route 
-          path="/login" 
-          element={<LoginPage />}
-        />
-        
+        <Route path="/error" element={<ErrorPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      
         <Route 
           path="/home" 
-          element={<PrivateRoute><HomePage /></PrivateRoute>} 
-        />
-
-        <Route
-          path="/users"
           element={
             <PrivateRoute>
+              <MainLayout>
+                <HomePage />
+              </MainLayout>
+            </PrivateRoute>
+          } 
+        />
+
+      <Route
+        path="/users"
+        element={
+          <PrivateRoute>
+            <MainLayout>
               <UsersPage />
-            </PrivateRoute>
-          }
-        />
+            </MainLayout>
+          </PrivateRoute>
+        }
+      />
 
-        <Route 
-          path="/category/:name" 
-          element={<PrivateRoute><CategoryPage /></PrivateRoute>} 
-        />
+      <Route 
+        path="/category/:name" 
+        element={<PrivateRoute><MainLayout><CategoryPage /></MainLayout></PrivateRoute>} 
+      />
 
-        <Route
-          path="/products:id"
-          element={
-            <PrivateRoute>
+      <Route
+        path="/products/:id" 
+        element={
+          <PrivateRoute>
+            <MainLayout>
               <ProductDetailsPage/>
-            </PrivateRoute>
-          }
-        />
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
-    </BrowserRouter>
+            </MainLayout>
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="*" element={<Navigate to="/login" />} />
+    </Routes>
+  </BrowserRouter>
   )
 }
