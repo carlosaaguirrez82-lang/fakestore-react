@@ -30,7 +30,7 @@ export function LoginPage() {
       console.log("Login exitoso");
       
       // Si todo sale bien, redirige a usuarios
-      navigate('/users');
+      navigate('/home');
       
     } catch (err) {
       // Si la API falla, capturamos el error para mostrarlo en la UI
