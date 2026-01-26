@@ -2,7 +2,7 @@ import MainLayout from '../layouts/MainLayout'
 import { Card, CardContent, Typography } from '@mui/material' //todo componente
 import { useProducts } from '../../app/usecases/useProducts'
 
-const ProductsPage = () => {
+const ProductDetailsPage = () => {
   const { data, isLoading, error } = useProducts()
 
   //todo crear un comopnente para loader
@@ -28,4 +28,4 @@ const ProductsPage = () => {
   );
 }
 
-export default ProductsPage;
+export default ProductDetailsPage;
