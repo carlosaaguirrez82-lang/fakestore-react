@@ -23,7 +23,6 @@ export function AppRouter() {
     <BrowserRouter>
       <Routes>
 
-        {/* Redirección de la raíz basada en la sesión */}
         <Route 
           path="/" 
           element={<Navigate to={isAuthenticated ? "/products" : "/login"} />} 
