@@ -3,7 +3,7 @@ import type { ProductRepository } from '../../domain/repositories/ProductReposit
 
 export const productApi: ProductRepository = {
 
-    async getAll() {
+    async getAllProducts() {
         const { data } = await httpClient.get('/products')
         return data
       },
