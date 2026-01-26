@@ -13,12 +13,23 @@ function PrivateRoute({ children }: { children: JSX.Element }) {
 }
 
 export function AppRouter() {
+
+  // Obtenemos el estado actual desde el store
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* Redirección de la raíz basada en la sesión */}
+        <Route 
+          path="/" 
+          element={<Navigate to={isAuthenticated ? "/products" : "/login"} />} 
+        />
+
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/login" element={<LoginPage />} />
-        
+
         <Route
           path="/users"
           element={
