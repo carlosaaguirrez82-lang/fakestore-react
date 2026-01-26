@@ -1,11 +1,13 @@
 import type { JSX } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage } from '../../ui/pages/LoginPage'
-import  ProductsPage from '../../ui/pages/ProductsPage'
 import  UsersPage  from '../../ui/pages/UsersPage'
 import  ErrorPage  from '../../ui/pages/ErrorPage'
-
+import HomePage from '../../ui/pages/HomePage'
+import CategoryPage from '../../ui/pages/CategoryPage'
 import { useAuthStore } from '../store/useAuthStore'
+import ProductDetailsPage from '../../ui/pages/ProductDetailsPage'
+
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
@@ -27,8 +29,20 @@ export function AppRouter() {
           element={<Navigate to={isAuthenticated ? "/products" : "/login"} />} 
         />
 
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route 
+          path="/error" 
+          element={<ErrorPage />} 
+        />
+
+        <Route 
+          path="/login" 
+          element={<LoginPage />}
+        />
+        
+        <Route 
+          path="/home" 
+          element={<PrivateRoute><HomePage /></PrivateRoute>} 
+        />
 
         <Route
           path="/users"
@@ -39,11 +53,16 @@ export function AppRouter() {
           }
         />
 
+        <Route 
+          path="/category/:name" 
+          element={<PrivateRoute><CategoryPage /></PrivateRoute>} 
+        />
+
         <Route
-          path="/products"
+          path="/products:id"
           element={
             <PrivateRoute>
-              <ProductsPage />
+              <ProductDetailsPage/>
             </PrivateRoute>
           }
         />
