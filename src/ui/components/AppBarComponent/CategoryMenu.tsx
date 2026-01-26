@@ -1,8 +1,22 @@
-import React from 'react'
+import Box from '@mui/material/Box';
+import { IconButton} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 const CategoryMenu = () => {
   return (
-    <div>CategoryMenu</div>
+    <Box>
+      <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="open drawer"
+        sx={{ mr: 2 }}
+    >
+        <MenuIcon />
+    </IconButton>
+    </Box>
+    
   )
 }
 
