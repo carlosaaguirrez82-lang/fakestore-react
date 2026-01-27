@@ -12,10 +12,14 @@ import MainLayout from '../../ui/layouts/MainLayout'
 
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
-  return isAuthenticated ? children : <Navigate to="/error" />
-}
+  const { isAuthenticated, isHydrated } = useAuthStore()
 
+  if (!isHydrated) {
+    return null // o spinner
+  }
+
+  return isAuthenticated ? children : <Navigate to="/login" />
+}
 export function AppRouter() {
 
   // Obtenemos el estado actual desde el store

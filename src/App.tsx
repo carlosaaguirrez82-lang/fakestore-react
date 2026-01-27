@@ -1,8 +1,8 @@
 import { AppRouter } from "./app/providers/RouterProvider";
-import { useCartPersistence } from './app/usecases/useCartPersistence'
+import { useAuthPersistence } from "./app/usecases/useAuthPersistence";
 
 const App = () => {
-      useCartPersistence()
+      useAuthPersistence()
       return <AppRouter />  
 }
 

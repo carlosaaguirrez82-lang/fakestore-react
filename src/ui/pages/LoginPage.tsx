@@ -1,87 +1,98 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
-import { useAuthStore } from '../../app/store/useAuthStore';
-import '../../ui/styles/LoginPage.css';
+import {
+  Button,
+  TextField,
+  Typography,
+  Container,
+  Box,
+  Paper,
+} from '@mui/material'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { loginSchema } from './login.schema'
+import type { LoginFormData } from './login.schema'
+import { useAuthStore } from '../../app/store/useAuthStore'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export function LoginPage() {
-  const login = useAuthStore((state) => state.login);
-  const navigate = useNavigate();
-  
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  const login = useAuthStore((s) => s.login)
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated)
+  const navigate = useNavigate()
 
-  const handleLogin = async (e: React.FormEvent) => {
-    // Evitamos que el navegador recargue la página
-    e.preventDefault(); 
-    setError(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  })
 
-    try {
-      console.log("Conectando con la API...");
-      
-      // Enviamos las credenciales al Store (Capa de Aplicación)
-      // .trim() elimina espacios accidentales que causan errores 401
-      await login({ 
-        username: username.trim(), 
-        password: password.trim() 
-      });
+  const onSubmit = async (data: LoginFormData) => {
+   try {
+    const cleanUsername = data.username.trim()
+    data.username = cleanUsername    
+    await login(data.username, data.password)
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (error: any) {
+    setError('root', {
+      type: 'manual',
+      message: error.message,
+    })
+  }
 
-      console.log("Login exitoso");
-      
-      // Si todo sale bien, redirige a usuarios
-      navigate('/home');
-      
-    } catch (err) {
-      // Si la API falla, capturamos el error para mostrarlo en la UI
-      console.error("Error:", err);
-      setError("Usuario o contraseña incorrectos.");
+  }
+
+    useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/products', { replace: true })
     }
-  };
+  }, [isAuthenticated, navigate])
+
 
   return (
     <Container maxWidth="xs">
-      <Box className="login-container">
-        <Typography component="h1" variant="h5" className="login-title">
-          FakeStore Login
+      <Paper elevation={3} sx={{ mt: 8, p: 3 }}>
+        <Typography variant="h6" textAlign="center" mb={2}>
+          Iniciar sesión
         </Typography>
-        
-        <Box component="form" onSubmit={handleLogin} className="login-form">
+
+        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
           <TextField
-            margin="normal"
-            required
+            label="Usuario"
             fullWidth
-            label="Nombre de Usuario"
-            autoFocus
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <TextField
             margin="normal"
-            required
-            fullWidth
-            label="Contraseña"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register('username')}
+            error={!!errors.username}
+            helperText={errors.username?.message}
           />
 
-          {error && (
-            <Alert severity="error" className="login-error-alert">
-              {error}
-            </Alert>
-          )}
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            margin="normal"
+            {...register('password')}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
 
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            className="login-button"
+            disabled={isSubmitting}
+            sx={{ mt: 2 }}
           >
-            Iniciar Sesión
+            Entrar
           </Button>
         </Box>
-      </Box>
+        {errors.root && (
+        <Typography color="error" variant="body2" mt={1}>
+        {errors.root.message}
+        </Typography>
+      )}
+      </Paper>
     </Container>
-  );
+  )
 }
