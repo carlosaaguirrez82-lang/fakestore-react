@@ -12,8 +12,10 @@ export function NavBar({ items }: NavBarProps) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        logout(); // Borra el token
         navigate('/login'); // Redirige visualmente
+        setTimeout(() => {
+            logout(); // Borra el token
+        }, 100);
     };
 
     return (
@@ -41,9 +43,9 @@ export function NavBar({ items }: NavBarProps) {
                     
                 </Box>
                 <Box>
-                    <button onClick={handleLogout}>
+                    <Button onClick={handleLogout}>
                         Cerrar Sesión
-                    </button>
+                    </Button>
                 </Box>
             </Toolbar>
         </AppBar>
