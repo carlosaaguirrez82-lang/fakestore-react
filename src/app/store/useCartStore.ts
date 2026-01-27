@@ -30,8 +30,9 @@ export const useCartStore = create<CartState>((set, get) => ({
         items: [...items, { ...product, quantity: 1 }],
       })
     }
+    console.log('Carrito actualizado:', get().items);
   },
-
+  
   removeFromCart: (id) =>
     set({
       items: get().items.filter((i) => i.id !== id),
