@@ -45,7 +45,7 @@ export function LoginPage() {
 
     useEffect(() => {
     if (isAuthenticated) {
-      navigate('/products', { replace: true })
+      navigate('/home', { replace: true })
     }
   }, [isAuthenticated, navigate])
 
@@ -54,7 +54,7 @@ export function LoginPage() {
     <Container maxWidth="xs">
       <Paper elevation={3} sx={{ mt: 8, p: 3 }}>
         <Typography variant="h6" textAlign="center" mb={2}>
-          Iniciar sesión
+          Bienvenido
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -84,7 +84,7 @@ export function LoginPage() {
             disabled={isSubmitting}
             sx={{ mt: 2 }}
           >
-            Entrar
+            Iniciar sesión
           </Button>
         </Box>
         {errors.root && (
