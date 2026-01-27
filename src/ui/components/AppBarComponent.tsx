@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Notifications from './AppBarComponent/Notifications';
+import ShoppingCart from './AppBarComponent/ShoppingCart';
 import CategoryMenu from './AppBarComponent/CategoryMenu';
 import { UserMenu } from './AppBarComponent/UserMenu';
 
@@ -35,6 +36,7 @@ export default function AppBarComponent() {
 
           {/* Menú de escritorio */}
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <ShoppingCart />
             <Notifications />
             <IconButton size="large" edge="end" onClick={handleProfileMenuOpen} color="inherit">
               <AccountCircle />
@@ -43,6 +45,8 @@ export default function AppBarComponent() {
 
           {/*Menú de móvil */}
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <ShoppingCart />
+            <Notifications />
             <IconButton size="large" onClick={handleMobileMenuOpen} color="inherit">
               <MoreIcon />
             </IconButton>
