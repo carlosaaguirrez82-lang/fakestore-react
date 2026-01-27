@@ -32,7 +32,7 @@ export function LoginPage() {
    try {
     const cleanUsername = data.username.trim()
     data.username = cleanUsername    
-    await login(data.username, data.password)
+    await login({ username: data.username, password: data.password })
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (error: any) {
     setError('root', {

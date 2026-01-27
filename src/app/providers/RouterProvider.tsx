@@ -12,11 +12,8 @@ import MainLayout from '../../ui/layouts/MainLayout'
 
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
-  const { isAuthenticated, isHydrated } = useAuthStore()
+  const { isAuthenticated } = useAuthStore()
 
-  if (!isHydrated) {
-    return null // o spinner
-  }
 
   return isAuthenticated ? children : <Navigate to="/login" />
 }

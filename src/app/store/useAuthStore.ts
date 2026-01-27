@@ -15,6 +15,7 @@ interface AuthState {
     login: (credentials: LoginCredentials) => Promise<void>;
     //login: (username: string, password: string) => Promise<void>
     logout: () => void;
+    hydrate: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -26,10 +27,20 @@ export const useAuthStore = create<AuthState>((set) => ({
     // login: async (username, password) => {
     const { token } = await authApi.login(credentials.username, credentials.password);
     // const { token } = await authApi.login(username, password)
-    set({isAuthenticated: true });
+    set({ isAuthenticated: true });
     localStorage.setItem('token', token);
     },
     
     //logout: () => set({ token: null, isAuthenticated: false }),
-    logout: () => set({ isAuthenticated: false, user: null}),
+    logout: () => {
+        set({ isAuthenticated: false, user: null });
+        localStorage.removeItem('token');
+    },
+
+    hydrate: () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            set({ isAuthenticated: true });
+        }
+    },
 }))
