@@ -1,52 +1,30 @@
-import { 
-  Box,
-  Button, 
-  Card, 
-  CardActions,
-  CardContent,
-  CardMedia, 
-  Typography 
-} from '@mui/material' //todo componente
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 import { useProducts } from '../../app/usecases/useProducts'
+import { ProductCard } from '../components/ProductCard'
 
 const HomePage = () => {
-
   const { data, isLoading, error } = useProducts()
-  
-  //todo crear un comopnente para loader
+
   if (isLoading) return <p>Cargando...</p> 
-  //todo crear un componente para error 
   if (error) return <p>Error al cargar productos</p>
-  //todo crear un componente para producto tipo card
-  /**
-   * * <Card product={product}/>**/
 
   return (
-    <div>
-      <Box >
+    <Box sx={{ p: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
         <div>Buscador *</div>
         <div>Filtro por precio *</div>
         <div>Filtro por rating *</div>
       </Box>
-      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+
+      <Grid container spacing={3}>
         {data?.map((product) => (
-          <Card key={product.id} sx={{ maxWidth: 345 }}>
-            <CardMedia
-              sx={{ height: 140 }}
-              component="img"
-              height="140"
-              image={product.image}
-              alt={product.title}
-            />
-            <CardContent>
-              <Typography>{product.title}</Typography>
-              <Typography>${product.price}</Typography>
-            </CardContent>
-            {/*<Button onclick={{handleProductDetail}}>Ver más</Button>*/}
-          </Card>
+          <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
+            <ProductCard product={product} />
+          </Grid>
         ))}
-      </Box>
-    </div>
+      </Grid>
+    </Box>
   )
 }
 
