@@ -1,12 +1,11 @@
 import type { PropsWithChildren } from 'react'
+import { NavBar } from '../components/NavBar/NavBar';
 
 const MainLayout =({ children }: PropsWithChildren) =>{
   return (
     <div style={{ padding: '1rem' }}>
-      <header>
-        <h3>FakeStore</h3>
-      </header>
-      <main>{children}</main>
+       <NavBar />
+       <main>{children}</main>
     </div>
   )
 }
