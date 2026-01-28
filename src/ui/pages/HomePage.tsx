@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import { useProducts } from '../../app/usecases/useProducts'
-import { ProductCard } from '../components/ProductCard'
+import { ProductCard } from '../components/ProductCards/ProductCard'
 
 const HomePage = () => {
   const { data, isLoading, error } = useProducts()

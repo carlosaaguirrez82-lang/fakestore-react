@@ -1,6 +1,6 @@
 import { Card, CardContent, CardMedia, Button, Typography, Box } from '@mui/material'
-import type { Product } from '../../domain/models/Product'
-import { useCartStore } from '../../app/store/useCartStore'
+import type { Product } from '../../../domain/models/Product'
+import { useCartStore } from '../../../app/store/useCartStore'
 
 interface Props {
   product: Product
