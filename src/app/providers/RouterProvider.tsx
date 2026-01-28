@@ -4,6 +4,7 @@ import { LoginPage } from '../../ui/pages/LoginPage'
 import {ProductsPage} from '../../ui/pages/ProductsPage'
 import  UsersPage  from '../../ui/pages/UsersPage'
 import  ErrorPage  from '../../ui/pages/ErrorPage'
+import {CartPage} from '../../ui/pages/CartPage/CartPage'
 
 import { useAuthStore } from '../store/useAuthStore'
 
@@ -37,6 +38,14 @@ export function AppRouter() {
           element={
             <PrivateRoute>
               <ProductsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <CartPage />
             </PrivateRoute>
           }
         />
