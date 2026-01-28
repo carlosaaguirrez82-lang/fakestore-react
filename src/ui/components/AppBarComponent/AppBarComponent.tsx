@@ -6,10 +6,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import Notifications from './AppBarComponent/Notifications';
-import ShoppingCart from './AppBarComponent/ShoppingCart';
-import CategoryMenu from './AppBarComponent/CategoryMenu';
-import { UserMenu } from './AppBarComponent/UserMenu';
+import Notifications from '../AppBarComponent/Notifications';
+import ShoppingCart from '../AppBarComponent/ShoppingCart';
+import CategoryMenu from '../AppBarComponent/CategoryMenu';
+import { UserMenu } from '../AppBarComponent/UserMenu';
 
 export default function AppBarComponent() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
