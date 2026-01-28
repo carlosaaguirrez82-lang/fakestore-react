@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1e1e1e;
+  color: #fff;
+
+  &__logo a {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__links a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__cart {
+    position: relative;
+  }
+
+  &__badge {
+    background: rgb(186, 239, 12);
+    color: white;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.4rem;
+  }
+}

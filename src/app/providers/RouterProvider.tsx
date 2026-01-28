@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage } from '../../ui/pages/LoginPage'
 import  UsersPage  from '../../ui/pages/UsersPage'
 import  ErrorPage  from '../../ui/pages/ErrorPage'
-import HomePage from '../../ui/pages/HomePage'
-import CategoryPage from '../../ui/pages/CategoryPage'
+import {CartPage} from '../../ui/pages/CartPage/CartPage'
+
 import { useAuthStore } from '../store/useAuthStore'
 import ProductDetailsPage from '../../ui/pages/ProductDetailsPage'
 import { CartPage } from '../../ui/pages/CartPage'  
@@ -43,45 +43,25 @@ export function AppRouter() {
             </PrivateRoute>
           } 
         />
-      
-      <Route 
-        path="/cart" 
-        element={
-          <PrivateRoute>
+
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <ProductsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
               <CartPage />
-          </PrivateRoute>
-        } 
-      />
-
-      <Route
-        path="/users"
-        element={
-          <PrivateRoute>
-            <MainLayout>
-              <UsersPage />
-            </MainLayout>
-          </PrivateRoute>
-        }
-      />
-
-      <Route 
-        path="/category/:name" 
-        element={<PrivateRoute><MainLayout><CategoryPage /></MainLayout></PrivateRoute>} 
-      />
-
-      <Route
-        path="/products/:id" 
-        element={
-          <PrivateRoute>
-            <MainLayout>
-              <ProductDetailsPage/>
-            </MainLayout>
-          </PrivateRoute>
-        }
-      />
-
-      <Route path="*" element={<Navigate to="/login" />} />
-    </Routes>
-  </BrowserRouter>
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
