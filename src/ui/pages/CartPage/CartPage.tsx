@@ -4,7 +4,7 @@ import { CartList } from '../../components/cart/CartList'
 import './CartPage.scss'
 
 export function CartPage() {
-  const { items, removeFromCart, clearCart } = useCartStore()
+  const { items, increment, decrement, removeFromCart, clearCart } = useCartStore()
 
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -18,6 +18,8 @@ export function CartPage() {
 
         <CartList
           items={items}
+          onIncrement={increment}
+          onDecrement={decrement}
           onRemove={removeFromCart}
         />
 
