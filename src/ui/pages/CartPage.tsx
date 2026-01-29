@@ -13,7 +13,7 @@ export function CartPage() {
                 <Card key={item.id}>
                     <CardContent>
                             <Typography variant='body1'>{item.title}: </Typography>
-                            <Button onClick={() => modQuantity(item, '+') }>+</Button>{item.quantity}<Button onClick={() => modQuantity(item,'-') }>-</Button>
+                            <Button onClick={() => modQuantity(item, '-') }>-</Button>{item.quantity}<Button onClick={() => modQuantity(item,'+') }>+</Button>
                             <Button onClick={() => removeFromCart(item.id)}>Eliminar</Button>
                     </CardContent>
                 </Card>
