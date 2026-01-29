@@ -2,10 +2,16 @@ import type { CartItem as CartItemModel } from '../../../domain/models/CartItem'
 
 interface Props {
   item: CartItemModel
+  onIncrement: (id: number) => void
+  onDecrement: (id: number) => void
   onRemove: (id: number) => void
 }
 
-export function CartItem({ item, onRemove }: Props) {
+export function CartItem({
+   item, 
+   onRemove,
+   onIncrement,
+   onDecrement}: Props) {
   return (
     <article className="cart-item">
       <img
@@ -19,6 +25,11 @@ export function CartItem({ item, onRemove }: Props) {
         <p className="cart-item__price">
           ${item.price} × {item.quantity}
         </p>
+        <div className="cart-item__actions">
+          <button onClick={() => onDecrement(item.id)}>-</button>
+          <span>{item.quantity}</span>
+          <button onClick={() => onIncrement(item.id)}>+</button>
+        </div>
       </div>
 
       <button
