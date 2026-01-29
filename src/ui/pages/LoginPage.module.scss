@@ -1,0 +1,38 @@
+// src/ui/pages/LoginPage.module.scss
+@use '../../styles/variables' as *; // Importamos variables para usarlas
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 20%) 100%);
+}
+
+.loginCard {
+  background-color: $white;
+  padding: $spacing-unit * 4; // 32px
+  border-radius: $border-radius * 2;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  
+  // Animación suave al entrar
+  animation: slideIn 0.5s ease-out;
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: $spacing-unit * 3;
+    font-weight: bold;
+  }
+}
+
+.formGroup {
+  margin-bottom: $spacing-unit * 2;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

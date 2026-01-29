@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 import { authApi } from '../../infrastructure/api/authApi'
 
 //Es parte de la capa app
@@ -14,7 +15,9 @@ interface AuthState {
                             //con el create crea el hook con la estructura de arriba
                             //(set) retorna el objeto que será el "Almacén global", que contendrá los datos con
                             //la estructura de arriba
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>()(
+    persist(
+    (set) => ({
     //Estado incial de los campos
     token: null,
     isAuthenticated: false,
@@ -30,4 +33,8 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     //Así sería un cierre de sesión
     logout: () => set({ token: null, isAuthenticated: false }),//Sirve para resetear los valores, es decir, sus valores iniciales
-}))
+}), {
+    name: 'auth-storage',
+}
+)
+)

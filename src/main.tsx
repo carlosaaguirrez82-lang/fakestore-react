@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { AppQueryProvider } from './app/providers/QueryProvider'
+import './styles/main.scss'
 
 //ReactDOM es el que se encarga de coordinar o unir el document HTML con el resto de la aplicación
 //Se utiliza el ! para decirle a createRoot que siempre va a existir el elemento 'root', 

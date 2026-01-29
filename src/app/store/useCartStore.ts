@@ -7,7 +7,6 @@ interface CartItem extends Product {
 
 interface CarState {
     items: CartItem[]
-    //addToCart es una función que recibe un objeto de tipo Product y no devuelve nada
     modQuantity: (product: Product, symbol: string) => void
     removeFromCart: (id: number) => void
     clearCart: () => void
@@ -24,11 +23,13 @@ export const useCartStore = create<CarState>((set, get) => ({
             const newItems = items.map((i) => {
                 if (i.id === product.id) {
                     return {
-                        ...i, quantity: symbol === '+' ? i.quantity + 1 : i.quantity - 1
+                        ...i, 
+                        quantity: symbol === '+' ? i.quantity + 1 : i.quantity - 1
                     };
                 }
                 return i;
-            });
+            })
+            .filter((i) => i.quantity > 0); 
             set({ items: newItems });
         } else {
             set({ items: [...items, { ...product, quantity: 1 }] })
@@ -39,7 +40,6 @@ export const useCartStore = create<CarState>((set, get) => ({
         set({
             items: get().items.filter((i) => i.id !== id),
         }),
-
 
     clearCart: () => set({ items: [] }),
 }))
