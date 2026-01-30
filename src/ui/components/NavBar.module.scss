@@ -1,0 +1,135 @@
+// src/ui/components/NavBar.module.scss
+@use '../../styles/variables' as *;
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    margin-right: $spacing-unit * 4;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: inherit; // El color lo hereda del AppBar de MUI, pero podemos forzar blanco
+    text-decoration: none;
+}
+
+.navLinks {
+    display: flex;
+    align-items: stretch;
+    gap: $spacing-unit; // Espacio entre botones
+}
+
+.link {
+    color: rgba(255, 255, 255, 0.7); // Blanco semitransparente por defecto
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: $spacing-unit (
+        $spacing-unit * 2
+    );
+transition: all 0.3s ease;
+font-weight: 500;
+
+&:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: $white;
+}
+}
+
+// Clase para cuando el link está activo (se aplica condicionalmente en React)
+.activeLink {
+    background-color: $white;
+    color: $primary-color; // Texto del color principal
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        background-color: darken($white, 5%);
+        color: darken($primary-color, 10%);
+    }
+}
+
+.logoutBtn {
+    // Estilo específico para el botón de salir si quieres
+    color: $white !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+.desktopSection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+
+    // Si la pantalla es menor a 900px, ocultamos esta sección
+    @media (max-width: 900px) {
+        display: none;
+    }
+}
+
+.mobileMenuButton {
+    display: none; // Oculto por defecto
+    color: inherit;
+
+    @media (max-width: 900px) {
+        display: flex; // Visible solo en pantallas chicas
+        flex-direction: row-reverse;
+    }
+}
+
+// Estilos para el Cajón Lateral (Drawer)
+.drawerContent {
+    width: 250px; // Ancho del menú lateral
+    padding: $spacing-unit * 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .drawerHeader {
+        margin-bottom: $spacing-unit * 4;
+        color: $primary-color;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: $spacing-unit;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .mobileLink {
+        display: block;
+        padding: $spacing-unit * 2;
+        margin-bottom: $spacing-unit;
+        text-decoration: none;
+        color: $text-dark;
+        border-radius: $border-radius;
+        transition: background 0.2s;
+
+        &:hover {
+            background-color: rgba($primary-color, 0.1);
+        }
+    }
+
+    // Clase activa para móvil
+    .activeMobileLink {
+        background-color: $primary-color;
+        color: $white;
+        font-weight: bold;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+
+    .mobileLogout {
+        margin-top: auto; // Empuja el botón al final
+    }
+}
