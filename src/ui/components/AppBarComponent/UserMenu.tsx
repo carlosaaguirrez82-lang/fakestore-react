@@ -3,6 +3,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import Notifications from './Notifications';
 import { useAuthStore } from '../../../app/store/useAuthStore';
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import SettingsModal from './ModalSettings';
 
 interface UserMenuProps {
   anchorEl: HTMLElement | null;
@@ -22,6 +24,8 @@ export const UserMenu = ({
   const logout = useAuthStore((s) => s.logout);
   const navigate = useNavigate();
 
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const onLogoutClick = () => {
     logout();
     handleMenuClose();
@@ -30,9 +34,17 @@ export const UserMenu = ({
 
   const handleMenuProfile = () => {
     handleMenuClose();
-    navigate('/users')
+    navigate('/users');
   };
 
+  const handleModalSettings = () => {
+    handleMenuClose();
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -48,7 +60,7 @@ export const UserMenu = ({
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuProfile}>Mi perfil</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Ajustes</MenuItem>
+      <MenuItem onClick={handleModalSettings}>Ajustes</MenuItem>
       <MenuItem onClick={onLogoutClick} sx={{ color: 'error.main' }}>Cerrar sesión</MenuItem>
     </Menu>
   );
@@ -83,6 +95,7 @@ export const UserMenu = ({
     <>
       {desktopMenu}
       {mobileMenu}
+      {isModalOpen && <SettingsModal onClose={closeModal} />}
     </>
   );
 };
