@@ -25,7 +25,10 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
           Ajustes
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          Aquí puedes configurar tus ajustes.
+          Modo oscuro
+        </Typography>
+        <Typography sx={{ mt: 2 }}>
+          Notificaciones
         </Typography>
         <Button onClick={onClose} sx={{ mt: 2 }} variant="contained" color="primary">
           Cerrar
