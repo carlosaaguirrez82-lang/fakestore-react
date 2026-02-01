@@ -67,6 +67,16 @@ export function AppRouter() {
             </PrivateRoute>
           }
         />
+
+        <Route
+          path="/products/:id"
+          element={
+            <PrivateRoute>
+              <ProductDetailsPage />
+            </PrivateRoute>
+          }
+        />  
+        
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
