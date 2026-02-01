@@ -59,6 +59,14 @@ export function AppRouter() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/users"
+          element={
+            <PrivateRoute>
+              <UsersPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
