@@ -9,6 +9,7 @@ import { CartPage } from '../../ui/pages/CartPage/CartPage'
 import { useAuthStore } from '../store/useAuthStore'
 import ProductDetailsPage from '../../ui/pages/ProductDetailsPage'
 import MainLayout from '../../ui/layouts/MainLayout'
+import CategoryPage from '../../ui/pages/CategoryPage'
 
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
@@ -81,7 +82,7 @@ export function AppRouter() {
         path="/category"
         element={
           <PrivateRoute>
-              <ProductsPage />
+              <CategoryPage />
           </PrivateRoute>
         }
         />
