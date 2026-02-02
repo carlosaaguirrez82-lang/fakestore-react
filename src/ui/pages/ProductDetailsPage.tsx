@@ -28,10 +28,12 @@ const ProductDetailsPage = () => {
         <Typography variant="h6" color="primary">
           ${product.price}
         </Typography>
+        <img src={product.image} alt={product.title} style={{ maxWidth: '300px', marginTop: '16px' }} />
         <Typography variant="h6" color="primary">
           {product.category}
         </Typography>
         <Typography sx={{ mt: 2 }}>{product.description}</Typography>
+        <Typography sx={{ mt: 2 }}>{product.rating.rate} ({product.rating.count})</Typography>
       </Box>
       <Button 
         variant="contained" 
