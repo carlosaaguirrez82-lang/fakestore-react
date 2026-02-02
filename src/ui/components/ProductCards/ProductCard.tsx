@@ -1,17 +1,16 @@
 import { Card, CardContent, CardMedia, Button, Typography, Box } from '@mui/material'
 import type { Product } from '../../../domain/models/Product'
-import { useCartStore } from '../../../app/store/useCartStore'
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Product
+  
 }
 
 export function ProductCard({ product }: Props) {
-  //const addToCart = useCartStore((s) => s.addToCart)
 
   const navigate = useNavigate();
-  
+
   const handleOpenProductDetails = () => {
     navigate('/products/' + product.id);
   }
@@ -48,16 +47,6 @@ export function ProductCard({ product }: Props) {
         >
           Ver más
         </Button>
-        {/*}
-        <Button 
-          variant="contained" 
-          fullWidth 
-          onClick={() => addToCart(product)}
-          sx={{ mt: 2 }}
-        >
-          Agregar
-        </Button>
-        */}
       </CardContent>
     </Card>
   )
