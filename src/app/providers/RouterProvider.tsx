@@ -76,6 +76,15 @@ export function AppRouter() {
             </PrivateRoute>
           }
         />  
+
+        <Route
+        path="/category"
+        element={
+          <PrivateRoute>
+              <ProductsPage />
+          </PrivateRoute>
+        }
+        />
         
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
