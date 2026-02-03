@@ -1,7 +1,8 @@
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import { useProducts } from '../../app/usecases/useProducts'
-import { ProductCard } from '../components/ProductCards/ProductCard'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { useProducts } from '../../app/usecases/useProducts';
+import { ProductCard } from '../components/ProductCards/ProductCard';
+import FiltersComponent from '../components/Filters/FiltersComponent';
 
 const HomePage = () => {
   const { data, isLoading, error } = useProducts()
@@ -11,11 +12,7 @@ const HomePage = () => {
 
   return (
     <Box sx={{ p: 3 }}>
-      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
-        <div>Buscador *</div>
-        <div>Filtro por precio *</div>
-        <div>Filtro por rating *</div>
-      </Box>
+      <FiltersComponent  />
 
       <Grid container spacing={3}>
         {data?.map((product) => (
