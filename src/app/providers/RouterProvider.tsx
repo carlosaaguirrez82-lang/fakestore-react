@@ -79,7 +79,7 @@ export function AppRouter() {
         />  
 
         <Route
-        path="/category"
+        path="/category/:categoryName"
         element={
           <PrivateRoute>
               <CategoryPage />
