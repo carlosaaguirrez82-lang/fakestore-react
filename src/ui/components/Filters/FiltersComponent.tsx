@@ -7,7 +7,9 @@ const FiltersComponent = () => {
   return (
     <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
       <SearchField />
+      <Box sx={{ width: 20 }} />
       <PriceFilter />
+      <Box sx={{ width: 20 }} />
       <RatingFilter />
     </Box>
   )
