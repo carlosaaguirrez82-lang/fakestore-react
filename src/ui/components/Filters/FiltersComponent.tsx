@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import SearchField from './SearchField';
 import RatingFilter from './RatingFilter';
 import PriceFilter from './PriceFilter';
+import RestoreIcon from '@mui/icons-material/Restore';
 
 const FiltersComponent = () => {
   return (
@@ -11,6 +12,7 @@ const FiltersComponent = () => {
       <PriceFilter />
       <Box sx={{ width: 20 }} />
       <RatingFilter />
+      <RestoreIcon sx={{ cursor: 'pointer' }} />
     </Box>
   )
 }
