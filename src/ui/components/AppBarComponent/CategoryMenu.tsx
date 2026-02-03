@@ -7,6 +7,7 @@ import { useProducts } from '../../../app/usecases/useProducts';
 import { useParams } from 'react-router-dom';
 
 
+
 const CategoryMenu = () => {
   
   const { id } = useParams<{ id: string }>();
@@ -55,13 +56,13 @@ const CategoryMenu = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={() => handleOnClick('better_ratings')}>Mejor puntuados</MenuItem>
-      <MenuItem onClick={() => handleOnClick('latest_pieces')}>Últimas piezas</MenuItem>
-      <MenuItem onClick={() => handleOnClick('sales')}>Precio especial</MenuItem>
-      <MenuItem onClick={() => handleOnClick('electronics')}>Tecnología</MenuItem>
-      <MenuItem onClick={() => handleOnClick('jewelery')}>Joyería</MenuItem>
-      <MenuItem onClick={() => handleOnClick('women\'s_clothing')}>Ropa para dama</MenuItem>
-      <MenuItem onClick={() => handleOnClick('men\'s_clothing')}>Ropa para caballero</MenuItem>
+      <MenuItem onClick={() => handleOnClick("better_ratings")}>Mejor puntuados</MenuItem>
+      <MenuItem onClick={() => handleOnClick("latest_pieces")}>Últimas piezas</MenuItem>
+      <MenuItem onClick={() => handleOnClick("sales")}>Precio especial</MenuItem>
+      <MenuItem onClick={() => handleOnClick("electronics")}>Tecnología</MenuItem>
+      <MenuItem onClick={() => handleOnClick("jewelery")}>Joyería</MenuItem>
+      <MenuItem onClick={() => handleOnClick("women's clothing")}>Ropa para dama</MenuItem>
+      <MenuItem onClick={() => handleOnClick("men's clothing")}>Ropa para caballero</MenuItem>
     </Menu>
   );
 
