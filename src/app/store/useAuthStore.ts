@@ -27,7 +27,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     // login: async (username, password) => {
     const { token } = await authApi.login(credentials.username, credentials.password);
     // const { token } = await authApi.login(username, password)
-    set({ isAuthenticated: true });
+    set({ isAuthenticated: true,  user: credentials.username});
     localStorage.setItem('token', token);
     },
     
