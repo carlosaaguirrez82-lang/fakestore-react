@@ -1,15 +1,15 @@
 import type { JSX } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage } from '../../ui/pages/LoginPage/LoginPage'
-import  UsersPage  from '../../ui/pages/UsersPage'
-import  ErrorPage  from '../../ui/pages/ErrorPage'
+import  UsersPage  from '../../ui/pages/MyProfile/UsersPage'
+import  ErrorPage  from '../../ui/pages/LoginPage/ErrorPage'
 import  HomePage from '../../ui/pages/HomePage'
-import ProductsPage from '../../ui/pages/ProductDetailsPage'
+import ProductsPage from '../../ui/pages/ProductsPage/ProductDetailsPage'
 import { CartPage } from '../../ui/pages/CartPage/CartPage'
 import { useAuthStore } from '../store/useAuthStore'
-import ProductDetailsPage from '../../ui/pages/ProductDetailsPage'
+import ProductDetailsPage from '../../ui/pages/ProductsPage/ProductDetailsPage'
 import MainLayout from '../../ui/layouts/MainLayout'
-import CategoryPage from '../../ui/pages/CategoryPage'
+import CategoryPage from '../../ui/pages/ProductsPage/CategoryPage'
 
 
 function PrivateRoute({ children }: { children: JSX.Element }) {

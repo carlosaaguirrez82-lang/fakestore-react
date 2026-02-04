@@ -1,8 +1,8 @@
 import { CircularProgress, Typography, Box, Button } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import { useProducts } from '../../app/usecases/useProducts';
-import MainLayout from '../layouts/MainLayout';
-import { useCartStore } from '../../app/store/useCartStore';
+import { useProducts } from '../../../app/usecases/useProducts';
+import MainLayout from '../../layouts/MainLayout';
+import { useCartStore } from '../../../app/store/useCartStore';
 
 const ProductDetailsPage = () => {
   const { id } = useParams<{ id: string }>();

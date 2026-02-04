@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
-import { userApi } from '../../infrastructure/api/userApi'
-import MainLayout from '../layouts/MainLayout'
-import type { User } from '../../domain/models/User'
+import { userApi } from '../../../infrastructure/api/userApi'
+import MainLayout from '../../layouts/MainLayout'
+import type { User } from '../../../domain/models/User'
 
 const UsersPage = () => {
  const [users, setUsers] = useState<User[]>([])

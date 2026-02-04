@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import MainLayout from '../layouts/MainLayout';
-import { useProducts } from '../../app/usecases/useProducts';
-import { ProductCard } from '../components/ProductCards/ProductCard';
+import MainLayout from '../../layouts/MainLayout';
+import { useProducts } from '../../../app/usecases/useProducts';
+import { ProductCard } from '../../components/ProductCards/ProductCard';
 import { Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import FiltersComponent from '../components/Filters/FiltersComponent';
-import { productApi } from '../../infrastructure/api/productApi'
+import FiltersComponent from '../../components/Filters/FiltersComponent';
+import { productApi } from '../../../infrastructure/api/productApi'
 
 const CategoryPage = () => {
   const { data, isLoading, error } = useProducts()
