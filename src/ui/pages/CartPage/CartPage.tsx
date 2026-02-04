@@ -1,6 +1,6 @@
 import { useCartStore } from '../../../app/store/useCartStore'
 import MainLayout from '../../layouts/MainLayout'
-import { CartList } from '../../components/cart/CartList'
+import { CartList } from '../../components/Cart/CartList'
 import './CartPage.scss'
 
 export function CartPage() {
