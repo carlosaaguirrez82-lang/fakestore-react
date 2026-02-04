@@ -1,5 +1,7 @@
 import React from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
+import DarkMode from './DarkMode';
+import Notifications from './Notifications';
 
 interface SettingsModalProps {
   onClose: () => void;
@@ -24,12 +26,8 @@ const SettingsModal = ({ onClose }: SettingsModalProps) => {
         <Typography variant="h6" component="h2">
           Ajustes
         </Typography>
-        <Typography sx={{ mt: 2 }}>
-          Modo oscuro
-        </Typography>
-        <Typography sx={{ mt: 2 }}>
-          Notificaciones
-        </Typography>
+        <DarkMode />
+        <Notifications />
         <Button onClick={onClose} sx={{ mt: 2 }} variant="contained" color="primary">
           Cerrar
         </Button>

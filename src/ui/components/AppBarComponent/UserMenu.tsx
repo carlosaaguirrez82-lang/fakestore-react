@@ -4,7 +4,7 @@ import Notifications from './Notifications';
 import { useAuthStore } from '../../../app/store/useAuthStore';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import SettingsModal from './ModalSettings';
+import SettingsModal from '../ModalSettings/ModalSettings';
 
 interface UserMenuProps {
   anchorEl: HTMLElement | null;
