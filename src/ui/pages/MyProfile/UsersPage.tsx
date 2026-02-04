@@ -39,17 +39,22 @@ const UsersPage = () => {
   }
 
   if (!SelectedUser) {
-    return <Typography>No se encontró información del perfil.</Typography>;
+    return (
+      <MainLayout>
+        <Box>
+          <Typography>No se encontró información del perfil.</Typography>
+        </Box>
+      </MainLayout>
+    )
   }
 
   return (
-
-    <Box>
-      <Typography><strong>Usuario:</strong> {SelectedUser.username}</Typography>
-        <Typography><strong>Email:</strong> {SelectedUser.email}</Typography>
-        
-    </Box>
-
+    <MainLayout>
+      <Box>
+        <Typography><strong>Usuario:</strong> {SelectedUser.username}</Typography>
+          <Typography><strong>Email:</strong> {SelectedUser.email}</Typography>
+      </Box>
+    </MainLayout>
   )
 }
 

@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import { useProducts } from '../../app/usecases/useProducts';
 import { ProductCard } from '../components/ProductCards/ProductCard';
 import FiltersComponent from '../components/Filters/FiltersComponent';
+import MainLayout from '../layouts/MainLayout';
 
 const HomePage = () => {
   const { data, isLoading, error } = useProducts()
@@ -11,17 +12,19 @@ const HomePage = () => {
   if (error) return <p>Error al cargar productos</p>
 
   return (
-    <Box sx={{ p: 3 }}>
-      <FiltersComponent  />
+    <MainLayout>
+      <Box sx={{ p: 3 }}>
+        <FiltersComponent  />
 
-      <Grid container spacing={3}>
-        {data?.map((product) => (
-          <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
-            <ProductCard product={product} />
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+        <Grid container spacing={3}>
+          {data?.map((product) => (
+            <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
+              <ProductCard product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </MainLayout>
   )
 }
 

@@ -8,7 +8,6 @@ import ProductsPage from '../../ui/pages/ProductsPage/ProductDetailsPage'
 import { CartPage } from '../../ui/pages/CartPage/CartPage'
 import { useAuthStore } from '../store/useAuthStore'
 import ProductDetailsPage from '../../ui/pages/ProductsPage/ProductDetailsPage'
-import MainLayout from '../../ui/layouts/MainLayout'
 import CategoryPage from '../../ui/pages/ProductsPage/CategoryPage'
 
 
@@ -37,9 +36,7 @@ export function AppRouter() {
           path="/home" 
           element={
             <PrivateRoute>
-              <MainLayout>
                 <HomePage />
-              </MainLayout>
             </PrivateRoute>
           } 
         />
