@@ -29,7 +29,7 @@ export function AppRouter() {
                 }
                 />
 
-                <Route path="/products" element={
+                <Route path="/products/:category?" element={
                     <PrivateRoute>{/*Todo lo que esté dentro de PrivateRoute, necesita tener isAuthenticated = true*/}
                         <ProductsPage />
                     </PrivateRoute>
