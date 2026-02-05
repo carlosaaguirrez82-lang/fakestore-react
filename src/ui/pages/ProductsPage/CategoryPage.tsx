@@ -8,31 +8,33 @@ import { useParams } from 'react-router-dom';
 import FiltersComponent from '../../components/Filters/FiltersComponent';
 import { productApi } from '../../../infrastructure/api/productApi'
 
-const CategoryPage = () => {
-  const { data, isLoading, error } = useProducts()
-  const { categoryName } = useParams(); 
+const  CategoryPage = () => {
+  const { categoryName } = useParams<{ categoryName: string }>();
+  // Le pasamos la categoría al hook
+  const { data: filteredProducts, isLoading, error } = useProducts(categoryName);
 
-  if (isLoading) return <p>Cargando...</p> 
-  if (error) return <p>Error al cargar productos</p>
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar productos</p>;
 
   return (
     <MainLayout>
       <Box sx={{ p: 3 }}>
-          <Typography variant="h4" gutterBottom>
-            {categoryName}
-          </Typography>
-          <FiltersComponent  />
-  
-          <Grid container spacing={3}>
-            {data?.filter((product) => product.category === categoryName).map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
-                <ProductCard product={product} />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+        <Typography variant="h4" sx={{ mb: 3, textTransform: 'capitalize' }}>
+          {categoryName?.replace('_', ' ')}
+        </Typography>
+        
+        <FiltersComponent />
+
+        <Grid container spacing={3}>
+          {filteredProducts?.map((product) => (
+            <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
+              <ProductCard product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </MainLayout>
-  )
+  );
 }
 
 export default CategoryPage
