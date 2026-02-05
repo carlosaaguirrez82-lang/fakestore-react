@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { useProducts } from '../../app/usecases/useProducts';
-import { ProductCard } from '../components/ProductCards/ProductCard';
-import FiltersComponent from '../components/Filters/FiltersComponent';
-import MainLayout from '../layouts/MainLayout';
+import { useProducts } from '../../../app/usecases/useProducts';
+import { ProductCard } from '../../components/ProductCards/ProductCard';
+import FiltersComponent from '../../components/Filters/FiltersComponent';
+import MainLayout from '../../layouts/MainLayout';
 
 const HomePage = () => {
   const { data, isLoading, error } = useProducts()
